@@ -17,48 +17,48 @@
 	images {
 		kernel {
 			description = "Ubuntu Kernel";
-			data = /incbin/("../../../stage/Image");
+			data = /incbin/("kernel.img");
 			type = "kernel";
-			arch = "${CRAFT_ARCH_BUILD_FOR}";
+			arch = "arm64";
 			os = "linux";
 			compression = "none";
-			load =  <some memory address, perhaps kernel_addr_r>;
-			entry = <some memory address, perhaps kernel_addr_r>;
+			load =  <0x07c00000>;
+			entry = <0x07c00000>;
 			hash {
 				algo = "sha256";
 			};
 		};
 		ramdisk {
 			description = "Ubuntu Core ramdisk";
-			data = /incbin/("../../../stage/initrd.img");
+			data = /incbin/("initrd.img");
 			type = "ramdisk";
-			arch = "${CRAFT_ARCH_BUILD_FOR}";
+			arch = "arm64";
 			os = "linux";
 			compression = "none";
-			load =  <some memory address, perhaps ramdisk_addr_r>;
+			load =  <0x07d00000>;
 			hash {
 				algo = "sha256";
 			};
 		};
-		<device-tree-name>.dtb {
+		platypus-rdk.dtb {
 			description = "<platform> DTB";
-			data = /incbin/("../../../stage/dtbs/<platform>.dtb");
+			data = /incbin/("dtbs/synaptics/platypus-rdk.dtb");
 			type = "flat_dt";
-			arch = "${CRAFT_ARCH_BUILD_FOR}";
+			arch = "arm64";
 			compression = "none";
-			load =  <some memory address, perhaps fdt_addr_r>;
+			load =  <0x047f6000>;
 			hash {
 				algo = "sha256";
 			};
 		};
 	};
 	configurations {
-		default = "<configuration name>";
-		<configuration name> {
-			description = "<apt description>";
+		default = "platypus-rdk";
+		platypus-rdk {
+			description = "Synaptics SL1640";
 			kernel = "kernel";
 			ramdisk = "ramdisk";
-			fdt = "<device-tree-name>.dtb";
+			fdt = "platypus-rdk.dtb";
 			hash {
 				algo = "sha256";
 			};
