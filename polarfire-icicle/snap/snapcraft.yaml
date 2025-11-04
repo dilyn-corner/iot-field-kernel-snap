@@ -10,7 +10,7 @@ description: |
   The kernel and initrd are provided as a singular FIT image file.
 
 architectures:
-  - build-on:  [amd64, riscv64]
+  - build-on: [amd64, riscv64]
     build-for: [riscv64]
 
 grade: stable
@@ -38,7 +38,7 @@ parts:
     organize:
       lib/firmware: firmware/
     stage:
-    # Remove firmware files for things that will never be needed
+      # Remove firmware files for things that will never be needed
       - -firmware/mellanox
       - -firmware/mrvl
       - -firmware/qcom
@@ -75,8 +75,6 @@ parts:
   initrd:
     plugin: initrd
     after: [kernel, firmware]
-    initrd-build-efi-image: false
-    build-snaps: [core22/latest/stable]
     prime:
       - -*
 

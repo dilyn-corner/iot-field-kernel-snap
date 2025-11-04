@@ -25,7 +25,7 @@ issues: https://github.com/canonical/iot-field-kernel-snap/issues
 website: https://github.com/canonical/iot-field-kernel-snap/tree/22/odroid-hc4
 
 architectures:
-  - build-on:  [arm64, amd64]
+  - build-on: [arm64, amd64]
     build-for: [arm64]
 
 package-repositories:
@@ -98,7 +98,6 @@ parts:
     plugin: initrd
     after: [kernel, firmware]
     initrd-build-efi-image: false
-    build-snaps: [core22/latest/stable]
     prime:
       - -initrd.img-*
       - -kernel.efi-*

@@ -152,9 +152,7 @@ parts:
   initrd:
     plugin: initrd
     after: [kernel, trim-firmware]
-    initrd-build-efi-image: false
-    initrd-configured-modules: [nls_iso8859-1, sunxi-mmc]
-    build-snaps: [core22/latest/stable]
+    initrd-modules: [nls_iso8859-1, sunxi-mmc]
     prime:
       - -*
 

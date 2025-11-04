@@ -23,16 +23,9 @@ This snap is built out of three components:
 ## Building
 
 This snap should be built using the experimental kernel and
-initrd snapcraft plugins. These plugins are available from
-[this](https://github.com/canonical/snapcraft/pull/4302) PR. In order to build
-this snap, you will have to install that fork of snapcraft.
-
-You can find a ready-built snap package of that
-snapcraft in the Releases section of this repository
-[here](https://github.com/canonical/iot-field-kernel-snap/releases/tag/temp).
-
-This snap should be buildable with:
+initrd snapcraft plugins.
 
 ```
+  snap install --classic --channel=latest/edge/kernel-initrd-plugin snapcraft
   snapcraft --enable-experimental-plugins
 ```
